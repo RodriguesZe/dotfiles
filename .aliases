@@ -1,0 +1,93 @@
+# General (https://remysharp.com/2018/08/23/cli-improved)
+alias l="ls -la"
+alias cat="bat --theme=TwoDark"
+alias ping='prettyping --nolegend'
+alias preview="fzf --preview 'bat --color \"always\" {}'"
+alias htop="sudo htop"
+alias help='tldr'
+alias cl="clear"
+
+# scripts dev
+#alias sgb="~/webserver/scripts/sync-git-branches"
+alias sgb="~/webserver/personal/dotfiles/git/sync-git-branches-v2"
+alias synclog="~/webserver/work/dotfiles/backend/sync-logs.sh"
+alias dsql="~/webserver/work/dotfiles/backend/dump-data-to-local-machine.sh"
+
+# apps
+alias work="~/webserver/personal/dotfiles/terminal/start-working.sh"
+alias gohome="~/webserver/personal/dotfiles/terminal/stop-working.sh"
+
+#git commands
+alias gs="git status"
+alias gst="git stash"
+alias gsta="git stash apply"
+alias gb="git branch"
+alias gbc="git for-each-ref --count=30 --sort=-committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(color:blue)%(authorname) %(color:reset)(%(color:green)%(committerdate:relative)%(color:reset))'"
+alias gaa="git add ."
+alias gc="git commit -m"
+alias gph="git push"
+alias gpho="git push origin"
+alias gpl="git pull"
+alias gplo="git pull origin"
+alias gchc="git checkout"
+alias gnb="git checkout -b"
+alias gl="git log"
+alias glo="git log --oneline"
+alias nah="git reset --hard && git clean -df"
+alias append="git commit --amend --no-edit"
+alias lola="git log --graph --oneline --decorate --all"
+alias gdiff="git diff"
+
+# navigation
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+
+# php cs fixer
+alias fix="php-cs-fixer fix"
+
+#nanobox
+alias nr="nanobox run"
+alias nrs="nanobox run php-server"
+alias ns="nanobox status"
+alias nrsl="nanobox run php artisan serve --host 0.0.0.0"
+alias nstp="nanobox stop"
+
+# laravel
+alias migrate="php artisan migrate"
+alias seed="php artisan db:seed"
+alias rollback="php artisan migrate:rollback"
+alias refresh="php artisan migrate:refresh --seed"
+alias dmp="composer dump-autoload"
+
+# documentation laravel
+alias doc-app="php artisan api:docs --name "Helpr API Documentation" --use-version v1-app --output-file ./documentation.apib"
+alias doc-cms="php artisan api:docs --name "Helpr API Documentation" --use-version v1-cms --output-file ./documentation.apib"
+alias dochtml="aglio -i documentation.apib --theme-template triple -o output.html"
+alias fulldoc="php artisan api:docs --name "Helpr API Documentation" --use-version v1-cms --output-file ./documentation.apib && aglio -i documentation.apib --theme-template triple -o output.html"
+
+# TDD
+alias test="vendor/bin/phpunit"
+alias testf="vendor/bin/phpunit --filter"
+alias rsql="rm ./storage/tests/databases/db.sqlite && touch ./storage/tests/databases/db.sqlite"
+
+# server 
+alias helprserver="ssh root@128.199.59.191"
+alias testserver="ssh root@207.154.199.126"
+alias cmsbackup="ssh root@178.62.252.55"
+alias balancer="ssh root@188.166.30.126"
+alias mongo="ssh root@188.166.28.140"
+
+# brew
+alias mysqlr="brew services restart mysql"
+
+# docker
+alias de="docker exec -it"
+alias dps="docker ps"
+
+# docker compose
+alias dcu="docker-compose up"
+alias dcud="docker-compose up -d"
+alias dcd="docker-compose down"
+alias dcr="docker-compose run --rm --no-deps"
