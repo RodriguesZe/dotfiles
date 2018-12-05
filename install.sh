@@ -14,6 +14,9 @@ source $helpers_dir/colors.sh
 source $helpers_dir/greetings.sh
 source $helpers_dir/animations.sh
 
+
+skipQuestions=false
+
 #===================================================================================
 
 # changelog
@@ -30,7 +33,10 @@ function init() {
     clear
     hello
     changelog "$title" "$description" "$author" "$date" "$version"
-    disclaimer
+
+    if ! $skipQuestions; then
+        disclaimer
+    fi
 
     yellow_color
     echo "I just need your password once... "
@@ -52,33 +58,35 @@ function disclaimer() {
     fi
 }
 
-function install_command_line_tools() {
+function install_xcode() {
     reset_color
     echo "Detecting installed Command Line Tools..."
 
     if ! [ $(xcode-select -p) ]; then
         yellow_color
-        echo "You don't have Command Line Tools installed"
+        echo "You don't have xcode installed"
         echo "They are required to proceed with installation"
 
-        green_color
-        read -p "Do you agree to install Command Line Tools? (y/N) " -n 1 answer
-        echo
+        if ! $skipQuestions; then
+            green_color
+            read -p "Do you agree to install Command Line Tools? (y/N) " -n 1 answer
+            echo
 
-        if [ ${answer} != "y" ]; then
-            yellow_color
-            echo "Skipping the installation..."
-            exit 1
+            if ! $skipQuestions && [ ${answer} != "y" ]; then
+                yellow_color
+                echo "Skipping the installation..."
+                exit 1
+            fi
         fi
 
         blue_color
-        echo "Installing Command Line Tools..."
+        echo "Installing xcode..."
         echo "Please, wait until Command Line Tools will be installed, before continue"
 
         xcode-select --install
     else
         yellow_color
-        echo "Seems like you have installed Command Line Tools, so skipping..."
+        echo "Xcode is already installed..."
     fi
 
     reset_color
@@ -180,7 +188,7 @@ function terminal(){
     echo "Configuring your terminal..."
     #source ./terminal.sh
 
-    #install_command_line_tools
+    #install_xcode
     install_homebrew
     install_php
     install_composer
@@ -237,7 +245,5 @@ function goodbye() {
 
 init
 terminal
-#php
-#apps
 #symlink_files
 goodbye
