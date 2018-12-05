@@ -20,7 +20,7 @@ source $helpers_dir/animations.sh
 
 #===================================================================================
 title="stop-working.sh"
-description="This script will close all the apps no longer needed, after an awsome work day."
+description="This script will close all the apps no longer needed, after an awesome work day."
 author="ZeRodrigues"
 date="24/10/2018"
 version="0.1.0"
@@ -117,7 +117,7 @@ function goodbye()
 {
 	green_color
     echo
-    echo "You're ready to go home! Have a pleasent evening."
+    echo "You're ready to go home! Have a pleasant evening."
     exit 0
 }
 

@@ -20,7 +20,7 @@ source $helpers_dir/animations.sh
 
 #===================================================================================
 title="start-working.sh"
-description="This script will get your mac ready for an awsome work day."
+description="This script will get your mac ready for an awesome work day."
 author="ZeRodrigues"
 date="24/10/2018"
 version="0.1.0"
@@ -36,7 +36,7 @@ function open_apps()
 {
 	yellow_color
 	echo ""
-	echo "Oppening all your apps..."
+	echo "Opening all your apps..."
 
 	green_color
 
