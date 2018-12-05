@@ -29,18 +29,18 @@ date="5/11/2018"
 version="0.1.0"
 
 
-function init() {	
+function init() {
     clear
     hello
     changelog "$title" "$description" "$author" "$date" "$version"
 
     if ! $skipQuestions; then
         disclaimer
-    fi
 
-    yellow_color
-    echo "I just need your password once... "
-    sudo -v #ask password beforehand
+        yellow_color
+        echo "I just need your password once... "
+        sudo -v #ask password beforehand
+    fi
 }
 
 function disclaimer() {
@@ -55,6 +55,12 @@ function disclaimer() {
         red_color
         echo "Sorry to see you leaving so soon... take care!"
         exit 1
+    fi
+}
+
+function read_variables() {
+    if [[ -n ${1+x} ]]; then
+        skipQuestions=$1
     fi
 }
 
@@ -186,7 +192,6 @@ function terminal(){
     reset_color
     echo
     echo "Configuring your terminal..."
-    #source ./terminal.sh
 
     #install_xcode
     install_homebrew
@@ -243,6 +248,7 @@ function goodbye() {
     exit 0
 }
 
+read_variables $1
 init
 terminal
 #symlink_files
