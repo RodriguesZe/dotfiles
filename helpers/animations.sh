@@ -62,7 +62,7 @@ function animated_shrug()
 
 function kill_spinner()
 {
-	if [ $# -eq 0 ]
+	if [[ $# -eq 0 ]]
   	then
     	echo "No pid was provided"
     	exit 64

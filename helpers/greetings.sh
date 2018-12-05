@@ -32,7 +32,7 @@ function proceed_question()
 
     read -p "Shall we proceed? (y/N) " -n 1 answer
     echo
-    if [ ${answer} != "y" ]; then
+    if [[ ${answer} != "y" ]]; then
         red_color
         echo "Sorry to see you leaving so soon... take care!"
         exit 1
