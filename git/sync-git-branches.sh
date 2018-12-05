@@ -21,7 +21,7 @@ source $helpers_dir/animations.sh
 
 #===================================================================================
 title="sync-git-branches.sh"
-description="This script will sync every two branches in the same repository."
+description="This script will sync two branches in the same repository."
 author="ZeRodrigues"
 date="3/11/2018"
 version="0.1.2"
