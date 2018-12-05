@@ -8,8 +8,7 @@ alias help='tldr'
 alias cl="clear"
 
 # scripts dev
-#alias sgb="~/webserver/scripts/sync-git-branches"
-alias sgb="~/webserver/personal/dotfiles/git/sync-git-branches-v2"
+alias sgb="~/webserver/personal/dotfiles/git/sync-git-branches.sh"
 alias synclog="~/webserver/work/dotfiles/backend/sync-logs.sh"
 alias dsql="~/webserver/work/dotfiles/backend/dump-data-to-local-machine.sh"
 
