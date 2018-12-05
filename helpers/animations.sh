@@ -2,29 +2,29 @@
 
 function loading_dots()
 {
-	while [[ 1 ]]; do
-		echo -ne "."
-		sleep 0.1
-	done
+    while [[ 1 ]]; do
+        echo -ne "."
+        sleep 0.1
+    done
 }
 
 function spin()
 {
-	declare -a spinner_elements=("${!1}")
+    declare -a spinner_elements=("${!1}")
 
-	while [[ 1 ]]; do
-		for i in "${spinner_elements[@]}"; do
-			echo -ne "\r$i"
-			sleep 0.4
-		done
-	done
+    while [[ 1 ]]; do
+        for i in "${spinner_elements[@]}"; do
+            echo -ne "\r$i"
+            sleep 0.4
+        done
+    done
 }
 
 function spinner_basic()
 {
-	spinner_basic=( '|' '/' '-' '\' )
+    spinner_basic=( '|' '/' '-' '\' )
 
-	spin spinner_basic[@]
+    spin spinner_basic[@]
 }
 
 function animated_shrug()
@@ -62,13 +62,13 @@ function animated_shrug()
 
 function kill_spinner()
 {
-	if [[ $# -eq 0 ]]
-  	then
-    	echo "No pid was provided"
-    	exit 64
-	fi
+    if [[ $# -eq 0 ]]
+    then
+        echo "No pid was provided"
+        exit 64
+    fi
 
-	# -13 prevents the output of warning messages after killing the pid
-	kill -13 "$1"
-	echo ""
+    # -13 prevents the output of warning messages after killing the pid
+    kill -13 "$1"
+    echo ""
 }

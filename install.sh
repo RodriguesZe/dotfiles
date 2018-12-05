@@ -27,28 +27,28 @@ version="0.1.0"
 
 
 function init() {	
-	clear
-	hello
-	changelog "$title" "$description" "$author" "$date" "$version"
-	disclaimer
+    clear
+    hello
+    changelog "$title" "$description" "$author" "$date" "$version"
+    disclaimer
 
     yellow_color
-	echo "I just need your password once... "
-	sudo -v #ask password beforehand
+    echo "I just need your password once... "
+    sudo -v #ask password beforehand
 }
 
 function disclaimer() {
     yellow_color
     echo "Disclaimer: this script will not install anything without your consent!"
-    echo 
+    echo
 
     green_color
     read -p "Do you want to proceed with installation? (y/N) " -n 1 answer
     echo
     if [ ${answer} != "y" ]; then
         red_color
-		echo "Sorry to see you leaving so soon... take care!"
-		exit 1
+        echo "Sorry to see you leaving so soon... take care!"
+        exit 1
     fi
 }
 
@@ -64,10 +64,11 @@ function install_command_line_tools() {
         green_color
         read -p "Do you agree to install Command Line Tools? (y/N) " -n 1 answer
         echo
+
         if [ ${answer} != "y" ]; then
-           yellow_color
- 	   echo "Skipping the installation..." 
-	   exit 1
+            yellow_color
+            echo "Skipping the installation..."
+            exit 1
         fi
 
         blue_color
@@ -90,14 +91,14 @@ function install_homebrew() {
     echo "Detecting if Homebrew is installed..."
 
     if ! [ $(which brew) ]; then
-    	yellow_color
-    	echo "Homebrew is not installed"
+        yellow_color
+        echo "Homebrew is not installed"
 
-    	reset_color
-    	echo "Installing Homebrew..."
+        reset_color
+        echo "Installing Homebrew..."
 
-    	ruby -e "$(curl -fsSL ${HOMEBREW_INSTALLER_URL})"
-	fi
+        /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    fi
 
     green_color
     echo "Homebrew installed!"
@@ -110,8 +111,8 @@ function install_homebrew() {
     echo "Homebrew updated!"
 
     reset_color
-	separator
-	sleep 1
+    separator
+    sleep 1
 }
 
 function install_php()
@@ -123,7 +124,7 @@ function install_php()
     pecl install imagick
 
     green_color
-    echo "PHP installed!" 
+    echo "PHP installed!"
 
     reset_color
     separator
@@ -139,7 +140,7 @@ function install_composer()
     mv composer.phar /usr/local/bin/composer
 
     green_color
-    echo "Composer installed!" 
+    echo "Composer installed!"
 
     reset_color
     separator
@@ -148,9 +149,9 @@ function install_composer()
 
 function install_bat()
 {
-	blue_color
-	echo "Trying to detect if bat is installed..."
-	
+    blue_color
+    echo "Trying to detect if bat is installed..."
+
     if ! [ $(which bat) ]; then
         yellow_color
         echo "Bat is not installed"
@@ -167,23 +168,23 @@ function install_bat()
 
 function cleanup(){
     reset_color
-	echo "Cleaning old brew installations..."
-	
-	brew cleanup
-	echo "Clean up done!"
+    echo "Cleaning old brew installations..."
+
+    brew cleanup
+    echo "Clean up done!"
 }
 
 function terminal(){
-	reset_color
-	echo
-	echo "Configuring your terminal..."
-	#source ./terminal.sh
+    reset_color
+    echo
+    echo "Configuring your terminal..."
+    #source ./terminal.sh
 
-	#install_command_line_tools
-	install_homebrew
+    #install_command_line_tools
+    install_homebrew
     install_php
     install_composer
-	install_bat
+    install_bat
 }
 
 function apps()
@@ -201,16 +202,16 @@ function apps()
 }
 
 function macos(){
-	reset_color
-	echo
-	echo "Configuring your macos..."
+    reset_color
+    echo
+    echo "Configuring your macos..."
 
-	proceed_question ""
+    proceed_question ""
 }
 
 function symlink_files()
 {
-	reset_color
+    reset_color
     echo
     echo "Making the remaining configurations..."
 }
@@ -229,7 +230,7 @@ function goodbye() {
     echo
     green_color
     echo "It's all for now. Have a great time!"
-
+    
     reset_color
     exit 0
 }
