@@ -230,7 +230,7 @@ function goodbye() {
     echo
     green_color
     echo "It's all for now. Have a great time!"
-    
+
     reset_color
     exit 0
 }
