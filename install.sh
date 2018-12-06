@@ -135,7 +135,12 @@ function install_php()
     echo "Installing all PHP related tools..."
 
     brew install php
-    pecl install imagick
+
+    echo "Installing imagick"
+    yes | pecl install imagick
+
+    echo "Installing xdebug"
+    pecl install xdebug
 
     green_color
     echo "PHP installed!"
