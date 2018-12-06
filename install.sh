@@ -134,7 +134,7 @@ function install_php()
     yellow_color
     echo "Installing all PHP related tools..."
 
-    # Install PHP extensions with PECL
+    brew install php
     pecl install imagick
 
     green_color
