@@ -24,10 +24,10 @@ title="clean-unused-branches.sh"
 description="This script will delete all local branches that are already deleted in origin."
 author="ZeRodrigues"
 date="07/03/2020"
-version="0.1.0"
+version="0.2.0"
 
 # passed params
-CHECK_ORIGIN='true'
+CHECK_ORIGIN=1
 
 # global params
 ORIGINBRANCH='develop'
@@ -81,6 +81,21 @@ function repository_info() {
     echo "$ORIGINBRANCH"
 }
 
+function read_options() {
+    while [ "$1" != "" ]; do
+        case $1 in
+            -s | --skip-origin )    CHECK_ORIGIN=0
+            ;;
+            -h | --help )           usage
+                exit
+            ;;
+            * )                     usage
+                exit 1
+        esac
+        shift
+    done
+}
+
 function local_merged_branches() {
     reset_color
     
@@ -89,7 +104,7 @@ function local_merged_branches() {
     OUTDATEDBRANCHES=($(git branch --merged $ORIGINBRANCH | grep -v $ORIGINBRANCH))
     
     if [[ "${#OUTDATEDBRANCHES[@]}" -eq 0 ]]; then
-        echo ""
+        echo
         echo "There is no outdated branches."
         reset_color
         exit 0
@@ -123,7 +138,12 @@ function how_to_remove_branches() {
 
 function delete_branches() {
     for i in "${OUTDATEDBRANCHES[@]}"; do
-        check_branch_origin_existance $i
+        if [ "$CHECK_ORIGIN" = "1" ]; then
+            check_branch_origin_existance $i
+        else
+            yellow_color
+            echo "$i"
+        fi
         
         if [ "${1}" == "all-at-once" ]; then
             delete_single_branch $i
@@ -187,7 +207,9 @@ function goodbye(){
     exit 0
 }
 
+##### Main
 welcome
+read_options $1
 repository_info
 local_merged_branches
 how_to_remove_branches
