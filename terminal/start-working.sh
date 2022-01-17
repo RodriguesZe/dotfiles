@@ -84,7 +84,7 @@ function apps_coding()
 {
     apps_functions_header "Coding apps"
 
-    APPS=("PhpStorm" "Sequel Pro" "Postman 2")
+    APPS=("PhpStorm")
 
     apps_open_container APPS[@]
 }
@@ -93,7 +93,7 @@ function apps_productivity()
 {
     apps_functions_header "Productivity apps"
 
-    APPS=("Alfred 3" "Spark" "Bear" "Slack" "Franz")
+    APPS=("Alfred 4" "Spark" "Bear" "Slack")
 
     apps_open_container APPS[@]
 }
