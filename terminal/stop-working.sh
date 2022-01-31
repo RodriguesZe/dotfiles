@@ -22,8 +22,8 @@ source $helpers_dir/animations.sh
 title="stop-working.sh"
 description="This script will close all the apps no longer needed, after an awesome work day."
 author="ZeRodrigues"
-date="24/10/2018"
-version="0.1.0"
+date="31/01/2022"
+version="0.1.1"
 
 function welcome()
 {
@@ -99,7 +99,7 @@ function apps_productivity()
 {
     apps_functions_header "Productivity apps"
 
-    APPS=("Bear" "Slack" "Franz")
+    APPS=("Bear" "Slack" "Spark")
 
     apps_close_container APPS[@]
 }
