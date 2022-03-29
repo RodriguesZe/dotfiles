@@ -22,8 +22,8 @@ source $helpers_dir/animations.sh
 title="start-working.sh"
 description="This script will get your mac ready for an awesome work day."
 author="ZeRodrigues"
-date="24/10/2018"
-version="0.1.0"
+date="29/03/2022"
+version="0.1.1"
 
 function welcome()
 {
@@ -40,7 +40,7 @@ function open_apps()
 
     green_color
 
-    apps_coding
+    #apps_coding
     apps_productivity
     apps_entertainment
 }
